@@ -1,0 +1,39 @@
+{% extends "management/layout.html" %}
+
+
+{% block content %}
+
+  {% if form.non_field_errors %}
+  <div class="non-field-errors">
+    {% for err in form.non_field_errors %}
+      <p class="form-error">{{ err }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% load crispy_forms_tags %}
+    <form method="POST">
+        {% csrf_token %}
+
+      {{form|crispy}}
+
+   
+     {% comment %} {% for form in form %} 
+
+    {{form.label_tag}} {{form}} <small class = 'text-danger'>{{form.errors|striptags}}</small><br></div>
+    {% endfor %} {% endcomment %}
+    <input type="submit" value="submit">
+</form>
+    
+
+{% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+    
+   
+
+    {% endblock %}

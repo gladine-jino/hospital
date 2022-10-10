@@ -1,0 +1,31 @@
+
+{% extends "management/layout.html" %}
+
+
+{% block content %}
+
+
+  
+
+<div class="container"></div>
+{% load crispy_forms_tags %}
+<form method="POST">
+    {% csrf_token %}
+<div class="container">   
+{{form|crispy}}
+<input type="submit" value="submit">
+</form>
+
+
+{% if messages %}  
+    <ul>   
+        {% for message in messages %}  
+            <li>{{ message }}</li>  
+            {% endfor %}  
+    </ul>   
+{% endif %}  
+
+
+
+
+{% endblock %}
